@@ -7,6 +7,10 @@ import React, { useState, useEffect } from "react";
 import DAOCAT_LOGO_DARK from "../assets/DAOCAT_LOGO_DARK.png";
 import coffeePotFull from "../assets/coffeePotFull.png";
 import coffeePotBlank from "../assets/coffeePotBlank.png";
+import VoteCat1 from "../assets/VoteCat1.png";
+import VoteCat2 from "../assets/VoteCat2.png";
+import VoteCat3 from "../assets/VoteCat3.png";
+import VoteCat4 from "../assets/VoteCat4.png";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,25 +28,25 @@ export default function Main() {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      if (!hovering) {
-        if (progress < 100) {
-          setProgress(progress + 0.2);
-        } else {
-          setProgress(0);
-          setProgressIndex(progressIndex + 1);
-          if (progressIndex == 3) {
-            setProgressIndex(0);
-          }
-        }
-      } else {
-        clearInterval(intervalId);
-      }
-    }, 25);
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     if (!hovering) {
+  //       if (progress < 100) {
+  //         setProgress(progress + 0.2);
+  //       } else {
+  //         setProgress(0);
+  //         setProgressIndex(progressIndex + 1);
+  //         if (progressIndex == 3) {
+  //           setProgressIndex(0);
+  //         }
+  //       }
+  //     } else {
+  //       clearInterval(intervalId);
+  //     }
+  //   }, 25);
 
-    return () => clearInterval(intervalId);
-  }, [progress, hovering]);
+  //   return () => clearInterval(intervalId);
+  // }, [progress, hovering]);
 
   const NavBar = (
     <div className="ds-navbar bg-base-100 w-fulls px-10 ">
@@ -283,8 +287,8 @@ export default function Main() {
     </div>
   );
   const ProgressBar = (
-    <div className="w-full flex flex-col-reverse lg:flex-row lg:h-[300px] justify-between ">
-      <div className="w-full lg:w-1/2 h-[200px] bg-white rounded-lg flex justify-center shadow-xl">
+    <div className="w-full flex flex-col-reverse lg:flex-row lg:h-[250px] justify-between ">
+      <div className="w-full lg:w-1/2 min-h-[200px] lg:h-[200px] bg-white rounded-lg flex justify-center shadow-xl">
         {progressIndex == 0 && (
           <div className="flex flex-col w-2/3 justify-center">
             <div className="ds-stat-value">{number}</div>
@@ -383,7 +387,7 @@ export default function Main() {
             className="h-full bg-gradient-to-r from-green-300 to-amber-700 transition-all"
             style={progressBarStyle}></div>
         </div>
-        <div className="w-full h-[200px] bg-white rounded-xl p-10 shadow-xl">
+        <div className="w-full min-h-[200px] bg-white rounded-xl p-10 shadow-xl">
           {progressIndex == 0 && (
             <div className="w-full h-full">
               <span>
@@ -430,12 +434,36 @@ export default function Main() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/DAOCAT_LOGO_DARK.png" />
       </Head>
-      <div className="w-screen lg:min-h-screen h-full overflow-y-auto  bg-white flex flex-col pb-[64px] lg:pb-0 justify-center items-center">
+      <div className="w-screen lg:min-h-screen h-full overflow-y-auto  bg-white flex flex-col pb-[80px] lg:pb-0 justify-center items-center">
         {NavBar}
         {Banner}
         <div className="lg:px-[200px] grow pt-5 lg:pt-10 px-4 w-full">
           {ProgressBar}
-          <div></div>
+        </div>
+        <div className="h-[500px] w-full flex justify-center flex-col items-center px-10">
+          <span>Governed by the community</span>
+          <span>
+            DAOCAT is a fully decentralized, community governed protocol with
+            156,720 token holders.
+          </span>
+          <div className="flex flex-col p-4 bg-white rounded-xl object-none shadow-xl">
+            <div className="flex flex-row">
+              <div>
+                <Image src={VoteCat1} alt="VoteCat1" width={200} height={200} style={{borderRadius:"0.75rem"}} />
+              </div>
+              <div>
+                <Image src={VoteCat2} alt="VoteCat1" width={200} height={200} style={{borderRadius:"0.75rem"}}  />
+              </div>
+            </div>
+            <div className="flex flex-row">
+              <div>
+                <Image src={VoteCat3} alt="VoteCat1" width={200} height={200} style={{borderRadius:"0.75rem"}}  />
+              </div>
+              <div>
+                <Image src={VoteCat4} alt="VoteCat1" width={200} height={200} style={{borderRadius:"0.75rem"}}  />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       {BottomNav}
