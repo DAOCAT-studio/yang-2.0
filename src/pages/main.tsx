@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import DAOCAT_LOGO_DARK from "../assets/DAOCAT_LOGO_DARK.png";
 import coffeePotFull from "../assets/coffeePotFull.png";
@@ -19,6 +19,8 @@ export default function Main() {
   const [progress, setProgress] = useState(0);
   const [progressIndex, setProgressIndex] = useState(0);
   const [hovering, setHovering] = useState(false);
+  const [nftGameMenuVisible, setNftGameMenuVisible] = useState(false);
+  const progressBarRef = useRef(null);
   useEffect(() => {
     const interval = setInterval(() => {
       setNumber(
@@ -28,25 +30,25 @@ export default function Main() {
     return () => clearInterval(interval);
   }, []);
 
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     if (!hovering) {
-  //       if (progress < 100) {
-  //         setProgress(progress + 0.2);
-  //       } else {
-  //         setProgress(0);
-  //         setProgressIndex(progressIndex + 1);
-  //         if (progressIndex == 3) {
-  //           setProgressIndex(0);
-  //         }
-  //       }
-  //     } else {
-  //       clearInterval(intervalId);
-  //     }
-  //   }, 25);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (!hovering) {
+        if (progress < 100) {
+          setProgress(progress + 0.2);
+        } else {
+          setProgress(0);
+          setProgressIndex(progressIndex + 1);
+          if (progressIndex == 3) {
+            setProgressIndex(0);
+          }
+        }
+      } else {
+        clearInterval(intervalId);
+      }
+    }, 25);
 
-  //   return () => clearInterval(intervalId);
-  // }, [progress, hovering]);
+    return () => clearInterval(intervalId);
+  }, [progress, hovering]);
 
   const NavBar = (
     <div className="ds-navbar bg-base-100 w-fulls px-10 ">
@@ -166,7 +168,20 @@ export default function Main() {
   };
   const BottomNav = (
     <div className="ds-btm-nav visible lg:invisible z-20">
-      <button>
+      <ul
+        className="ds-menu bg-white w-[140px] rounded-box fixed h-auto bottom-[64px] left-[190px] shadow-xl"
+        style={{ visibility: nftGameMenuVisible ? "visible" : "hidden" }}
+        onMouseOut={() => {
+          setNftGameMenuVisible(false);
+        }}>
+        <li className="w-full">
+          <a>Game</a>
+        </li>
+        <li className="w-full">
+          <a>NFT</a>
+        </li>
+      </ul>
+      <button className="ds-active">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5"
@@ -182,7 +197,7 @@ export default function Main() {
         </svg>
         <span className="ds-btm-nav-label">Home</span>
       </button>
-      <button className="ds-active">
+      <button>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5"
@@ -196,7 +211,26 @@ export default function Main() {
             d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
           />
         </svg>
-        <span className="ds-btm-nav-label">Warnings</span>
+        <span className="ds-btm-nav-label">Governance</span>
+      </button>
+      <button
+        onClick={() => {
+          setNftGameMenuVisible(true);
+        }}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+          />
+        </svg>
+        <span className="ds-btm-nav-label">NFT/Game</span>
       </button>
       <button>
         <svg
@@ -212,23 +246,7 @@ export default function Main() {
             d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
           />
         </svg>
-        <span className="ds-btm-nav-label">Statics</span>
-      </button>
-      <button>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-          />
-        </svg>
-        <span className="ds-btm-nav-label">Statics</span>
+        <span className="ds-btm-nav-label">About</span>
       </button>
     </div>
   );
@@ -248,15 +266,15 @@ export default function Main() {
               <h2 className="ds-card-title">DAO Coffee And Tea</h2>
               <p>Click the button to listen on Spotiwhy app.</p>
               <div className="ds-card-actions justify-end">
-                <button className="ds-btn ds-btn-primary">Listen</button>
+                <button className="ds-btn ds-btn-outline">More</button>
               </div>
             </div>
           </div>
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-            <a href="#slide2" className="btn btn-circle">
+            <a href="#slide2" className="btn btn-circle text-gray-300">
               ❮
             </a>
-            <a href="#slide2" className="btn btn-circle">
+            <a href="#slide2" className="btn btn-circle text-gray-300">
               ❯
             </a>
           </div>
@@ -267,27 +285,33 @@ export default function Main() {
             className="w-full lg:h-[500px] h-[429px] object-cover"
           />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-            <a href="#slide1" className="btn btn-circle">
+            <a href="#slide1" className="btn btn-circle text-gray-300">
               ❮
             </a>
-            <a href="#slide1" className="btn btn-circle">
+            <a href="#slide1" className="btn btn-circle text-gray-300">
               ❯
             </a>
           </div>
         </div>
       </div>
       <div className="relative bottom-12 right-0 flex justify-center w-full py-2 gap-2 invisible lg:visible">
-        <a href="#slide1" className="ds-btn ds-btn-xs">
+        <a
+          href="#slide1"
+          className="ds-btn ds-btn-xs ds-btn-outline border-gray-300 text-gray-300">
           1
         </a>
-        <a href="#slide2" className="ds-btn ds-btn-xs">
+        <a
+          href="#slide2"
+          className="ds-btn ds-btn-xs ds-btn-outline  border-gray-300 text-gray-300">
           2
         </a>
       </div>
     </div>
   );
   const ProgressBar = (
-    <div className="w-full flex flex-col-reverse lg:flex-row lg:h-[250px] justify-between ">
+    <div
+      className="w-full flex flex-col-reverse lg:flex-row lg:h-[250px] justify-between "
+      ref={progressBarRef}>
       <div className="w-full lg:w-1/2 min-h-[200px] lg:h-[200px] bg-white rounded-lg flex justify-center shadow-xl">
         {progressIndex == 0 && (
           <div className="flex flex-col w-2/3 justify-center">
@@ -311,8 +335,8 @@ export default function Main() {
         {progressIndex == 3 && (
           <div className="flex flex-row w-full lg:w-2/3 justify-center pt-5">
             {/* //145:0  80:100  */}
-            <div className="w-[150px] lg:w-[200px] h-[150px]">
-              <div
+            <div className="w-[150px] lg:w-[200px] h-[150px] static ">
+              {/* <div
                 className={`w-[150px] lg:w-[200px] h-[112px] absolute overflow-hidden z-10 `}>
                 <Image
                   src={coffeePotBlank}
@@ -323,10 +347,10 @@ export default function Main() {
                   // objectFit="cover"
                   // objectPosition="bottom"
                 />
-              </div>
+              </div> */}
               <div className="w-[150px] lg:w-[200px] h-[150px] relative ">
                 <Image
-                  src={coffeePotFull}
+                  src={coffeePotBlank}
                   alt="DaoCat Logo"
                   width={300}
                   height={300}
@@ -345,14 +369,22 @@ export default function Main() {
       </div>
 
       <div
-        className="flex flex-col w-full lg:w-[400px] pb-5"
+        className="flex flex-col w-full lg:w-[400px] mb-2"
         onMouseOver={() => {
           setHovering(true);
         }}
         onMouseLeave={() => {
           setHovering(false);
         }}>
-        <div className="ds-tabs flex flex-row justify-around">
+        <div
+          className="ds-tabs flex flex-row  w-full justify-around flex-nowrap overflow-x-hidden"
+          onClick={() => {
+            progressBarRef.current.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+              inline: "center",
+            });
+          }}>
           <a
             className={"ds-tab " + (progressIndex == 0 ? "ds-tab-active" : "")}
             onClick={() => {
@@ -426,6 +458,58 @@ export default function Main() {
       </div>
     </div>
   );
+  const GovernanceContent = (
+    <div className="h-auto w-full flex justify-center flex-col items-center px-10 mt-10 mb-10">
+      <span>Governed by the community</span>
+      <span>
+        DAOCAT is a fully decentralized, community governed protocol with
+        156,720 token holders.
+      </span>
+      <button className="ds-btn ds-btn-outline my-4">Governance Forum</button>
+      <div className="flex flex-col p-4 bg-white rounded-xl object-none shadow-xl">
+        <div className="flex flex-row">
+          <div>
+            <Image
+              src={VoteCat1}
+              alt="VoteCat1"
+              width={200}
+              height={200}
+              style={{ borderTopLeftRadius: "0.75rem" }}
+            />
+          </div>
+          <div>
+            <Image
+              src={VoteCat2}
+              alt="VoteCat1"
+              width={200}
+              height={200}
+              style={{ borderTopRightRadius: "0.75rem" }}
+            />
+          </div>
+        </div>
+        <div className="flex flex-row">
+          <div>
+            <Image
+              src={VoteCat3}
+              alt="VoteCat1"
+              width={200}
+              height={200}
+              style={{ borderBottomLeftRadius: "0.75rem" }}
+            />
+          </div>
+          <div>
+            <Image
+              src={VoteCat4}
+              alt="VoteCat1"
+              width={200}
+              height={200}
+              style={{ borderBottomRightRadius: "0.75rem" }}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
   return (
     <>
       <Head>
@@ -440,32 +524,49 @@ export default function Main() {
         <div className="lg:px-[200px] grow pt-5 lg:pt-10 px-4 w-full">
           {ProgressBar}
         </div>
-        <div className="h-[500px] w-full flex justify-center flex-col items-center px-10">
-          <span>Governed by the community</span>
-          <span>
-            DAOCAT is a fully decentralized, community governed protocol with
-            156,720 token holders.
-          </span>
-          <div className="flex flex-col p-4 bg-white rounded-xl object-none shadow-xl">
-            <div className="flex flex-row">
-              <div>
-                <Image src={VoteCat1} alt="VoteCat1" width={200} height={200} style={{borderRadius:"0.75rem"}} />
-              </div>
-              <div>
-                <Image src={VoteCat2} alt="VoteCat1" width={200} height={200} style={{borderRadius:"0.75rem"}}  />
-              </div>
-            </div>
-            <div className="flex flex-row">
-              <div>
-                <Image src={VoteCat3} alt="VoteCat1" width={200} height={200} style={{borderRadius:"0.75rem"}}  />
-              </div>
-              <div>
-                <Image src={VoteCat4} alt="VoteCat1" width={200} height={200} style={{borderRadius:"0.75rem"}}  />
-              </div>
-            </div>
+        {GovernanceContent}
+
+        <footer className="ds-footer p-10 bg-base-200 text-base-content">
+          <div>
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              fillRule="evenodd"
+              clipRule="evenodd"
+              className="fill-current">
+              <path d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z"></path>
+            </svg>
+            <p>
+              ACME Industries Ltd.
+              <br />
+              Providing reliable tech since 1992
+            </p>
           </div>
-        </div>
+          <div>
+            <span className="ds-footer-title">Services</span>
+            <a className="ds-link ds-link-hover">Branding</a>
+            <a className="ds-link ds-link-hover">Design</a>
+            <a className="ds-link ds-link-hover">Marketing</a>
+            <a className="ds-link ds-link-hover">Advertisement</a>
+          </div>
+          <div>
+            <span className="ds-footer-title">Company</span>
+            <a className="ds-link ds-link-hover">About us</a>
+            <a className="ds-link ds-link-hover">Contact</a>
+            <a className="ds-link ds-link-hover">Jobs</a>
+            <a className="ds-link ds-link-hover">Press kit</a>
+          </div>
+          <div>
+            <span className="ds-footer-title">Legal</span>
+            <a className="ds-link ds-link-hover">Terms of use</a>
+            <a className="ds-link ds-link-hover">Privacy policy</a>
+            <a className="ds-link ds-link-hover">Cookie policy</a>
+          </div>
+        </footer>
       </div>
+
       {BottomNav}
     </>
   );
