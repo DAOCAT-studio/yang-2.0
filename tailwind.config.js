@@ -9,9 +9,12 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      'google-caveat': ['"Caveat"', 'cursive'],
+    },
     extend: {},
   },
-  plugins: [require("daisyui")],
+  plugins: [require('@tailwindcss/typography'),require("daisyui")],
 
   // daisyUI config (optional)
   daisyui: {

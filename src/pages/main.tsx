@@ -59,7 +59,7 @@ export default function Main() {
           width={100}
           height={100}
         />
-        <div className="ds-dropdown invisible lg:visible">
+        {/* <div className="ds-dropdown invisible lg:visible">
           <label tabIndex={0} className="ds-btn ds-btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -106,9 +106,11 @@ export default function Main() {
               <a>Item 3</a>
             </li>
           </ul>
-        </div>
+        </div> */}
 
-        <a className="ds-btn ds-btn-ghost normal-case text-xl">DAOCAT</a>
+        <a className="ds-btn ds-btn-ghost normal-case text-3xl  font-google-caveat">
+          DAOCAT
+        </a>
       </div>
 
       <div className="ds-navbar-center hidden lg:flex">
@@ -517,6 +519,12 @@ export default function Main() {
         <meta name="description" content="DAO Coffe And Tea" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/DAOCAT_LOGO_DARK.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Caveat&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <div className="w-screen lg:min-h-screen h-full overflow-y-auto  bg-white flex flex-col pb-[80px] lg:pb-0 justify-center items-center">
         {NavBar}
@@ -533,13 +541,12 @@ export default function Main() {
             </h1>
           </div>
 
-          <ul className="ds-steps ds-steps-vertical lg:ds-steps-horizontal w-full text-gray-600 space-y-2">
+          <ul className="ds-steps ds-steps-vertical lg:ds-steps-horizontal w-full text-gray-600">
             <li className="ds-step ds-step-neutral">
               <span className=" absolute place-self-center lg:relative">
                 2023Q2
                 <br />
                 WhitePapper Release
-
               </span>
             </li>
             <li className="ds-step ">
@@ -552,7 +559,6 @@ export default function Main() {
             <li className="ds-step ">
               <span className=" absolute place-self-center lg:relative">
                 2023Q2
-
                 <br />
                 First Round IDO
               </span>
@@ -562,15 +568,12 @@ export default function Main() {
                 2023Q2
                 <br />
                 WhitePapper Release
-
               </span>
             </li>
-           
-            
           </ul>
         </div>
 
-        <footer className="ds-footer p-10 bg-base-200 text-base-content">
+        <footer className="ds-footer px-10 bg-base-200 text-base-content">
           <div>
             <Image
               src={DAOCAT_LOGO_DARK}
@@ -619,7 +622,7 @@ export default function Main() {
               </a>
             </div>
           </div>
-          <div className="w-full h-[300px] flex fle-row justify-between">
+          <div className="w-full flex fle-row justify-between">
             <div className="flex flex-col space-y-4">
               {/* <span className="ds-footer-title">Services</span> */}
               <a className="ds-link ds-link-hover">White Paper</a>
