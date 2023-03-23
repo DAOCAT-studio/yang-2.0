@@ -7,6 +7,9 @@ import React, { useState, useEffect, useRef } from "react";
 import DAOCAT_LOGO_DARK from "../assets/DAOCAT_LOGO_DARK.png";
 import coffeePotFull from "../assets/coffeePotFull.png";
 import coffeePotBlank from "../assets/coffeePotBlank.png";
+
+import NavBar from "@/components/NavBar";
+import BottomNavBar from "@/components/BottomNavBar";
 import VoteCat1 from "../assets/VoteCat1.png";
 import VoteCat2 from "../assets/VoteCat2.png";
 import VoteCat3 from "../assets/VoteCat3.png";
@@ -20,7 +23,7 @@ export default function Main() {
   const [progressIndex, setProgressIndex] = useState(0);
   const [hovering, setHovering] = useState(false);
   const [nftGameMenuVisible, setNftGameMenuVisible] = useState(false);
-  const progressBarRef = useRef(null);
+  const progressBarRef = useRef<null | HTMLDivElement>(null); 
   useEffect(() => {
     const interval = setInterval(() => {
       setNumber(
@@ -50,208 +53,9 @@ export default function Main() {
     return () => clearInterval(intervalId);
   }, [progress, hovering]);
 
-  const NavBar = (
-    <div className="ds-navbar bg-base-100 w-fulls px-10 ">
-      <div className="ds-navbar-start">
-        <Image
-          src={DAOCAT_LOGO_DARK}
-          alt="DaoCat Logo"
-          width={100}
-          height={100}
-        />
-        {/* <div className="ds-dropdown invisible lg:visible">
-          <label tabIndex={0} className="ds-btn ds-btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </label>
-          <ul
-            tabIndex={0}
-            className="ds-menu ds-menu-compact ds-dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li tabIndex={0}>
-              <a className="justify-between">
-                Parent
-                <svg
-                  className="fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24">
-                  <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-                </svg>
-              </a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
-          </ul>
-        </div> */}
-
-        <a className="ds-btn ds-btn-ghost normal-case text-3xl  font-google-caveat">
-          DAOCAT
-        </a>
-      </div>
-
-      <div className="ds-navbar-center hidden lg:flex">
-        <ul className="ds-menu ds-menu-horizontal px-1">
-          <li>
-            <a>Governance</a>
-          </li>
-          <li>
-            <a>NFT</a>
-          </li>
-          <li>
-            <a>Game</a>
-          </li>
-          <li>
-            <a>White Papper</a>
-          </li>
-        </ul>
-      </div>
-
-      <div className="ds-navbar-end invisible lg:visible">
-        <a className="ds-btn">Get started</a>
-      </div>
-      {/* <div className="ds-dropdown  ds-dropdown-end visible lg:invisible">
-        <label tabIndex={0} className="ds-btn ds-btn-ghost ds-btn-circle">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h7"
-            />
-          </svg>
-        </label>
-        <ul
-          tabIndex={0}
-          className="ds-menu ds-menu-compact ds-dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-          <li>
-            <a>Homepage</a>
-          </li>
-          <li>
-            <a>Portfolio</a>
-          </li>
-          <li>
-            <a>About</a>
-          </li>
-        </ul>
-      </div> */}
-    </div>
-  );
   const progressBarStyle = {
     width: `${progress}%`,
   };
-  const BottomNav = (
-    <div className="ds-btm-nav visible lg:invisible z-20">
-      <ul
-        className="ds-menu bg-white w-[140px] rounded-box fixed h-auto bottom-[64px] left-[190px] shadow-xl"
-        style={{ visibility: nftGameMenuVisible ? "visible" : "hidden" }}
-        onMouseOut={() => {
-          setNftGameMenuVisible(false);
-        }}>
-        <li className="w-full">
-          <a>Game</a>
-        </li>
-        <li className="w-full">
-          <a>NFT</a>
-        </li>
-      </ul>
-      <button className="ds-active">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-          />
-        </svg>
-        <span className="ds-btm-nav-label">Home</span>
-      </button>
-      <button>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        <span className="ds-btm-nav-label">Governance</span>
-      </button>
-      <button
-        onClick={() => {
-          setNftGameMenuVisible(true);
-        }}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-          />
-        </svg>
-        <span className="ds-btm-nav-label">NFT/Game</span>
-      </button>
-      <button>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-          />
-        </svg>
-        <span className="ds-btm-nav-label">About</span>
-      </button>
-    </div>
-  );
   const Banner = (
     <div className="lg:w-[1350px] lg:h-[500px] h-[429px] my-5 px-5 ">
       <div className="ds-carousel w-full rounded-xl shadow-xl  ">
@@ -381,11 +185,13 @@ export default function Main() {
         <div
           className="ds-tabs flex flex-row  w-full justify-around flex-nowrap overflow-x-hidden"
           onClick={() => {
-            progressBarRef.current.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-              inline: "center",
-            });
+            if (progressBarRef.current != null) {
+              progressBarRef.current.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+                inline: "center",
+              });
+            }
           }}>
           <a
             className={"ds-tab " + (progressIndex == 0 ? "ds-tab-active" : "")}
@@ -520,14 +326,14 @@ export default function Main() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/DAOCAT_LOGO_DARK.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
           href="https://fonts.googleapis.com/css2?family=Caveat&display=swap"
           rel="stylesheet"
         />
       </Head>
       <div className="w-screen lg:min-h-screen h-full overflow-y-auto  bg-white flex flex-col pb-[80px] lg:pb-0 justify-center items-center">
-        {NavBar}
+        <NavBar />
         {Banner}
         <div className="lg:px-[200px] grow pt-5 lg:pt-10 px-4 w-full">
           {ProgressBar}
@@ -641,7 +447,7 @@ export default function Main() {
         </footer>
       </div>
 
-      {BottomNav}
+      <BottomNavBar />
     </>
   );
 }
