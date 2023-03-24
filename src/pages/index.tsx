@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import React, { useState, useEffect, useRef } from "react";
-
+import { useRouter } from 'next/navigation';
 import DAOCAT_LOGO_DARK from "../assets/DAOCAT_LOGO_DARK.png";
 import coffeePotFull from "../assets/coffeePotFull.png";
 import coffeePotBlank from "../assets/coffeePotBlank.png";
@@ -23,7 +23,8 @@ export default function Main() {
   const [progressIndex, setProgressIndex] = useState(0);
   const [hovering, setHovering] = useState(false);
   const [nftGameMenuVisible, setNftGameMenuVisible] = useState(false);
-  const progressBarRef = useRef<null | HTMLDivElement>(null); 
+  const progressBarRef = useRef<null | HTMLDivElement>(null);
+  const router = useRouter();
   useEffect(() => {
     const interval = setInterval(() => {
       setNumber(
@@ -72,7 +73,7 @@ export default function Main() {
               <h2 className="ds-card-title">DAO Coffee And Tea</h2>
               <p>Click the button to listen on Spotiwhy app.</p>
               <div className="ds-card-actions justify-end">
-                <button className="ds-btn ds-btn-outline">More</button>
+                <button className="ds-btn ds-btn-outline" onClick={()=>{router.push('/blog')}}>More</button>
               </div>
             </div>
           </div>
