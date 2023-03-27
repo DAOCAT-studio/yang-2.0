@@ -28,7 +28,7 @@ const NavBar = () => {
 
       <div className="ds-navbar-center hidden lg:flex">
         <ul className="ds-menu ds-menu-horizontal px-1">
-          <li>
+          <li onClick={()=>{router.push("governance")}}>
             <a>Governance</a>
           </li>
           <li>

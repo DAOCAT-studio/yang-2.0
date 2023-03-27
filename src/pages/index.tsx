@@ -272,9 +272,9 @@ export default function Main() {
       <span>Governed by the community</span>
       <span>
         DAOCAT is a fully decentralized, community governed protocol with
-        156,720 token holders.
+        DCT(DAOCAT TOKEN) holders.
       </span>
-      <button className="ds-btn ds-btn-outline my-4">Governance Forum</button>
+      <button className="ds-btn ds-btn-outline my-4" onClick={()=>{window.open("https://manager.daolens.com/app/dao/DAOCAT/1285")}}>Governance Forum</button>
       <div className="flex flex-col p-4 bg-white rounded-xl object-none shadow-xl">
         <div className="flex flex-row">
           <div>
