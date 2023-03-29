@@ -18,7 +18,7 @@ const NavBar = () => {
         />
 
         <a
-          className="ds-btn ds-btn-ghost normal-case text-3xl  font-google-caveat"
+          className="ds-btn ds-btn-ghost normal-case text-3xl  font-google-caveat text-black"
           onClick={() => {
             router.push("/");
           }}>
@@ -26,24 +26,27 @@ const NavBar = () => {
         </a>
       </div>
 
-      <div className="ds-navbar-center hidden lg:flex">
-        <ul className="ds-menu ds-menu-horizontal px-1">
+      <div className="ds-navbar-center hidden lg:flex text-[#69997c]">
+        <ul className="ds-menu ds-menu-horizontal  rounded-xl ">
           <li onClick={()=>{router.push("governance")}}>
-            <a>Governance</a>
+            <a className="active:bg-gray-700">Governance</a>
           </li>
           <li>
-            <a>NFT</a>
+            <a className="active:bg-gray-700">NFT</a>
           </li>
           <li>
-            <a>Game</a>
+            <a className="active:bg-gray-700">Game</a>
           </li>
           <li>
-            <a>White Papper</a>
+            <a className="active:bg-gray-700">White Papper</a>
+          </li>
+          <li >
+            <a className="active:bg-gray-700" onClick={()=>{router.push("/aboutUs")}}>About Us</a>
           </li>
         </ul>
       </div>
 
-      <div className="ds-navbar-end invisible lg:visible">
+      <div className="ds-navbar-end invisible ">
         <a className="ds-btn">Get started</a>
       </div>
       {/* <div className="ds-dropdown  ds-dropdown-end visible lg:invisible">

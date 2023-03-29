@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import React, { useState, useEffect, useRef } from "react";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import DAOCAT_LOGO_DARK from "../assets/DAOCAT_LOGO_DARK.png";
 import coffeePotFull from "../assets/coffeePotFull.png";
 import coffeePotBlank from "../assets/coffeePotBlank.png";
@@ -14,7 +14,8 @@ import VoteCat1 from "../assets/VoteCat1.png";
 import VoteCat2 from "../assets/VoteCat2.png";
 import VoteCat3 from "../assets/VoteCat3.png";
 import VoteCat4 from "../assets/VoteCat4.png";
-
+import JungleCat from "../assets/JungleCat.png";
+import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Main() {
@@ -63,17 +64,23 @@ export default function Main() {
         <div id="slide1" className="ds-carousel-item relative w-full">
           <div className="ds-card lg:ds-card-side bg-base-100 shadow-xl w-full h-[429px] lg:h-[500px]  rounded-none">
             <figure className="lg:w-3/4">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Latte_and_dark_coffee.jpg"
+              <Image
+                src={JungleCat}
                 alt="Album"
                 className="w-full lg:h-[500px] object-cover"
               />
             </figure>
-            <div className="ds-card-body lg:w-1/4 ">
+            <div className="ds-card-body lg:w-1/4 bg-[#fadeca] text-[#69997c]">
               <h2 className="ds-card-title">DAO Coffee And Tea</h2>
               <p>Click the button to listen on Spotiwhy app.</p>
               <div className="ds-card-actions justify-end">
-                <button className="ds-btn ds-btn-outline" onClick={()=>{router.push('/blog')}}>More</button>
+                <button
+                  className="ds-btn ds-btn-outline text-[#69997c] hover:bg-[#69997c] hover:border-white"
+                  onClick={() => {
+                    router.push("/blog");
+                  }}>
+                  More
+                </button>
               </div>
             </div>
           </div>
@@ -91,7 +98,7 @@ export default function Main() {
             src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Latte_and_dark_coffee.jpg"
             className="w-full lg:h-[500px] h-[429px] object-cover"
           />
-          <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+          <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2 ">
             <a href="#slide1" className="btn btn-circle text-gray-300">
               ❮
             </a>
@@ -119,7 +126,7 @@ export default function Main() {
     <div
       className="w-full flex flex-col-reverse lg:flex-row lg:h-[250px] justify-between "
       ref={progressBarRef}>
-      <div className="w-full lg:w-1/2 min-h-[200px] lg:h-[200px] bg-white rounded-lg flex justify-center shadow-xl">
+      <div className="w-full lg:w-1/2 min-h-[200px] lg:h-[200px] bg-[#fadeca] text-[#69997c] rounded-lg flex justify-center shadow-xl ">
         {progressIndex == 0 && (
           <div className="flex flex-col w-2/3 justify-center">
             <div className="ds-stat-value">{number}</div>
@@ -225,10 +232,11 @@ export default function Main() {
         </div>
         <div className="h-1 w-full rounded-full overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-green-300 to-amber-700 transition-all"
+            className="h-full bg-gradient-to-r from-[#569378ad] to-lynx transition-all"
             style={progressBarStyle}></div>
         </div>
-        <div className="w-full min-h-[200px] bg-white rounded-xl p-10 shadow-xl">
+
+        <div className="w-full min-h-[200px] bg-jungle text-sunset rounded-xl p-10 shadow-xl">
           {progressIndex == 0 && (
             <div className="w-full h-full">
               <span>
@@ -268,14 +276,20 @@ export default function Main() {
     </div>
   );
   const GovernanceContent = (
-    <div className="h-auto w-full flex justify-center flex-col items-center px-10 mt-10 mb-10">
+    <div className="h-auto w-full flex justify-center flex-col items-center px-10 mt-10 mb-10 text-jungle">
       <span>Governed by the community</span>
       <span>
         DAOCAT is a fully decentralized, community governed protocol with
         DCT(DAOCAT TOKEN) holders.
       </span>
-      <button className="ds-btn ds-btn-outline my-4" onClick={()=>{window.open("https://manager.daolens.com/app/dao/DAOCAT/1285")}}>Governance Forum</button>
-      <div className="flex flex-col p-4 bg-white rounded-xl object-none shadow-xl">
+      <button
+        className="ds-btn ds-btn-outline text-[#69997c] hover:bg-[#69997c] hover:border-white my-10"
+        onClick={() => {
+          window.open("https://manager.daolens.com/app/dao/DAOCAT/1285");
+        }}>
+        Governance Forum
+      </button>
+      <div className="flex flex-col p-4 bg-jungle rounded-xl object-none shadow-xl">
         <div className="flex flex-row">
           <div>
             <Image
@@ -333,7 +347,7 @@ export default function Main() {
           rel="stylesheet"
         />
       </Head>
-      <div className="w-screen lg:min-h-screen h-full overflow-y-auto  bg-white flex flex-col pb-[80px] lg:pb-0 justify-center items-center">
+      <div className="w-screen lg:min-h-screen h-full overflow-y-auto bg-[#f9fbf1] flex flex-col pb-[80px] lg:pb-0 justify-center items-center ">
         <NavBar />
         {Banner}
         <div className="lg:px-[200px] grow pt-5 lg:pt-10 px-4 w-full">
@@ -341,14 +355,14 @@ export default function Main() {
         </div>
         {GovernanceContent}
 
-        <div className="w-full flex flex-col my-10 drop-shadow-lg shadow-black  px-10">
+        <div className="w-full flex flex-col my-10 drop-shadow-lg shadow-black  px-10 text-jungle">
           <div className="w-full flex flex-col justify-center items-center mb-10 ">
             <h1 className="text-2xl font-bold drop-shadow-lg shadow-black ">
               RoadMap
             </h1>
           </div>
 
-          <ul className="ds-steps ds-steps-vertical lg:ds-steps-horizontal w-full text-gray-600">
+          <ul className="ds-steps ds-steps-vertical lg:ds-steps-horizontal w-full text-text-jungle">
             <li className="ds-step ds-step-neutral">
               <span className=" absolute place-self-center lg:relative">
                 2023Q2
@@ -356,7 +370,7 @@ export default function Main() {
                 WhitePapper Release
               </span>
             </li>
-            <li className="ds-step ">
+            <li className="ds-step ds-step-neutral">
               <span className=" absolute place-self-center lg:relative">
                 2023Q2
                 <br />
@@ -380,72 +394,7 @@ export default function Main() {
           </ul>
         </div>
 
-        <footer className="ds-footer px-10 bg-base-200 text-base-content">
-          <div>
-            <Image
-              src={DAOCAT_LOGO_DARK}
-              alt="DaoCat Logo"
-              width={100}
-              height={100}
-            />
-            <p>
-              DAOCAT
-              <br />
-              DAO,Coffe And Tea
-            </p>
-          </div>
-          <div>
-            <span className="ds-footer-title">Social</span>
-            <div className="grid grid-flow-col gap-4">
-              <a>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  className="fill-current">
-                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
-                </svg>
-              </a>
-              <a>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  className="fill-current">
-                  <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
-                </svg>
-              </a>
-              <a>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  className="fill-current">
-                  <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-          <div className="w-full flex fle-row justify-between">
-            <div className="flex flex-col space-y-4">
-              {/* <span className="ds-footer-title">Services</span> */}
-              <a className="ds-link ds-link-hover">White Paper</a>
-              <a className="ds-link ds-link-hover">About Us</a>
-              <a className="ds-link ds-link-hover">Contact</a>
-              <a className="ds-link ds-link-hover">Github</a>
-            </div>
-            {/* <div className="flex flex-col  space-y-4">
-              <span className="ds-footer-title">Services</span>
-              <a className="ds-link ds-link-hover">Branding</a>
-              <a className="ds-link ds-link-hover">Design</a>
-              <a className="ds-link ds-link-hover">Marketing</a>
-              <a className="ds-link ds-link-hover">Advertisement</a>
-            </div> */}
-          </div>
-        </footer>
+        <Footer />
       </div>
 
       <BottomNavBar />
