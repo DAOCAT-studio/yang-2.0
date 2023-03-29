@@ -85,10 +85,10 @@ export default function Main() {
             </div>
           </div>
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-            <a href="#slide2" className="btn btn-circle text-gray-300">
+            <a href="#slide2" className="btn btn-circle text-jungle">
               ❮
             </a>
-            <a href="#slide2" className="btn btn-circle text-gray-300">
+            <a href="#slide2" className="btn btn-circle text-jungle">
               ❯
             </a>
           </div>
@@ -99,10 +99,10 @@ export default function Main() {
             className="w-full lg:h-[500px] h-[429px] object-cover"
           />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2 ">
-            <a href="#slide1" className="btn btn-circle text-gray-300">
+            <a href="#slide1" className="btn btn-circle text-jungle">
               ❮
             </a>
-            <a href="#slide1" className="btn btn-circle text-gray-300">
+            <a href="#slide1" className="btn btn-circle text-jungle">
               ❯
             </a>
           </div>
@@ -111,12 +111,12 @@ export default function Main() {
       <div className="relative bottom-12 right-0 flex justify-center w-full py-2 gap-2 invisible lg:visible">
         <a
           href="#slide1"
-          className="ds-btn ds-btn-xs ds-btn-outline border-gray-300 text-gray-300">
+          className="ds-btn ds-btn-xs ds-btn-outline ds-btn-accent border-jungle text-jungle hover:border-white">
           1
         </a>
         <a
           href="#slide2"
-          className="ds-btn ds-btn-xs ds-btn-outline  border-gray-300 text-gray-300">
+          className="ds-btn ds-btn-xs ds-btn-outline ds-btn-accent border-jungle text-jungle hover:border-white">
           2
         </a>
       </div>
