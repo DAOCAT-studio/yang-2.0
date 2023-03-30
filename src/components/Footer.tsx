@@ -2,7 +2,7 @@ import Image from "next/image";
 import DAOCAT_LOGO_DARK from "../assets/DAOCAT_LOGO_DARK.png";
 const Footer = () => {
   return (
-    <footer className="ds-footer px-10 bg-base-200  text-jungle">
+    <footer className="ds-footer px-10 bg-base-200  text-jungle pt-5">
       <div>
         <Image
           src={DAOCAT_LOGO_DARK}

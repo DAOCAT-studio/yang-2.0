@@ -19,8 +19,8 @@ export default function Blog() {
     "# About DAOCAT Studio";
 
   const blogContent = (
-    <div className="grow lg:w-1/2 p-3 lg:p-10 m-4 mb-[100px] rounded-xl shadow-lg border-gray-100  border-y-2">
-      <article className="prose max-w-none dark:prose-invert">
+    <div className="grow lg:w-1/2 p-3 lg:p-10 m-4 bg-sunset mb-[100px] rounded-xl shadow-lg text-jungle">
+      <article className="prose prose-jungle max-w-none dark:prose-invert">
         <ReactMarkdown children={testMd} remarkPlugins={[remarkGfm]} />
       </article>
     </div>
@@ -40,7 +40,7 @@ export default function Blog() {
           rel="stylesheet"
         />
       </Head>
-      <div className="w-screen lg:min-h-screen h-full overflow-y-auto  bg-white flex flex-col pb-[80px] lg:pb-0 justify-between items-center">
+      <div className="w-screen lg:min-h-screen h-full overflow-y-auto bg-paper flex flex-col pb-[80px] lg:pb-0 justify-between items-center">
         <NavBar />
         {/* {Banner} */}
         {blogContent}

@@ -227,7 +227,7 @@ export default function Main() {
             onClick={() => {
               setProgressIndex(3);
             }}>
-            Crowdfunding
+            Launch
           </a>
         </div>
         <div className="h-1 w-full rounded-full overflow-hidden">
