@@ -15,6 +15,7 @@ import VoteCat2 from "../assets/VoteCat2.png";
 import VoteCat3 from "../assets/VoteCat3.png";
 import VoteCat4 from "../assets/VoteCat4.png";
 import JungleCat from "../assets/JungleCat.png";
+import CoffeeCat from "../assets/CoffeeCat.png";
 import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,9 +24,10 @@ export default function Main() {
   const [progress, setProgress] = useState(0);
   const [progressIndex, setProgressIndex] = useState(0);
   const [hovering, setHovering] = useState(false);
-  const [nftGameMenuVisible, setNftGameMenuVisible] = useState(false);
   const progressBarRef = useRef<null | HTMLDivElement>(null);
   const router = useRouter();
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setNumber(
@@ -59,23 +61,23 @@ export default function Main() {
     width: `${progress}%`,
   };
   const Banner = (
-    <div className="lg:w-[1350px] lg:h-[500px] h-[429px] my-5 px-5 ">
-      <div className="ds-carousel w-full rounded-xl shadow-xl  ">
-        <div id="slide1" className="ds-carousel-item relative w-full">
-          <div className="ds-card lg:ds-card-side bg-base-100 shadow-xl w-full h-[429px] lg:h-[500px]  rounded-none">
-            <figure className="lg:w-3/4">
+    <div className="lg:w-[80%] lg:h-[700px] h-[429px] my-5 px-5 ">
+      <div className="ds-carousel w-full rounded-xl shadow-xl h-full ">
+        <div id="slide1" className="ds-carousel-item relative w-full h-full">
+          <div className="ds-card lg:ds-card-side bg-base-100 shadow-xl w-full h-[429px] lg:h-full  rounded-none">
+            <figure className="lg:w-full lg:h-full">
               <Image
                 src={JungleCat}
                 alt="Album"
-                className="w-full lg:h-[500px] object-cover"
+                className="w-full lg:h-full object-cover"
               />
             </figure>
-            <div className="ds-card-body lg:w-1/4 bg-[#fadeca] text-[#69997c]">
+            <div className="ds-card-body lg:w-1/4 lg:h-full lg:bg-opacity-75 lg:backdrop-blur-sm lg:absolute right-0 bg-[#fadeca] text-[#69997c]">
               <h2 className="ds-card-title">DAO Coffee And Tea</h2>
               <p>Click the button to listen on Spotiwhy app.</p>
               <div className="ds-card-actions justify-end">
                 <button
-                  className="ds-btn ds-btn-outline text-[#69997c] hover:bg-[#69997c] hover:border-white"
+                  className="backdrop-blur-sm ds-btn ds-btn-outline text-[#69997c] hover:bg-[#69997c] hover:border-white"
                   onClick={() => {
                     router.push("/blog");
                   }}>
@@ -93,12 +95,31 @@ export default function Main() {
             </a>
           </div>
         </div>
-        <div id="slide2" className="ds-carousel-item relative w-full">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Latte_and_dark_coffee.jpg"
-            className="w-full lg:h-[500px] h-[429px] object-cover"
-          />
-          <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2 ">
+        <div id="slide2" className="ds-carousel-item relative w-full h-full">
+          <div className="ds-card lg:ds-card-side bg-base-100 shadow-xl w-full h-[429px] lg:h-full  rounded-none">
+            <figure className="lg:w-full lg:h-full">
+              <Image
+                src={CoffeeCat}
+                alt="Album"
+                className="w-full lg:h-full object-cover 
+                "
+              />
+            </figure>
+            <div className="ds-card-body lg:w-1/4 lg:h-full lg:bg-opacity-75 lg:backdrop-blur-sm lg:absolute right-0 bg-[#fadeca] text-[#69997c]">
+              <h2 className="ds-card-title">DAO Coffee And Tea</h2>
+              <p>Click the button to listen on Spotiwhy app.</p>
+              <div className="ds-card-actions justify-end">
+                <button
+                  className="backdrop-blur-sm ds-btn ds-btn-outline text-[#69997c] hover:bg-[#69997c] hover:border-white"
+                  onClick={() => {
+                    router.push("/blog");
+                  }}>
+                  More
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a href="#slide1" className="btn btn-circle text-jungle">
               ❮
             </a>
@@ -107,16 +128,49 @@ export default function Main() {
             </a>
           </div>
         </div>
+        {/* <div id="slide2" className="ds-carousel-item relative w-full">
+          <div className="ds-card lg:ds-card-side bg-base-100 shadow-xl w-full h-[429px] lg:h-[500px]  rounded-none">
+            <figure className="lg:w-3/4">
+              <Image
+                src={CoffeeCat}
+                alt="Album"
+                className="w-full lg:h-[500px] object-cover"
+                style={{ objectPosition: "50% 40%" }}
+              />
+            </figure>
+            <div className="ds-card-body lg:w-1/4 bg-[#fadeca] text-[#69997c]">
+              <h2 className="ds-card-title">DAO Coffee And Tea</h2>
+              <p>Click the button to listen on Spotiwhy app.</p>
+              <div className="ds-card-actions justify-end">
+                <button
+                  className="ds-btn ds-btn-outline text-[#69997c] hover:bg-[#69997c] hover:border-white"
+                  onClick={() => {
+                    router.push("/blog");
+                  }}>
+                  More
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+            <a href="#slide1" className="btn btn-circle text-jungle">
+              ❮
+            </a>
+            <a href="#slide1" className="btn btn-circle text-jungle">
+              ❯
+            </a>
+          </div>
+        </div> */}
       </div>
       <div className="relative bottom-12 right-0 flex justify-center w-full py-2 gap-2 invisible lg:visible">
         <a
           href="#slide1"
-          className="ds-btn ds-btn-xs ds-btn-outline ds-btn-accent border-jungle text-jungle hover:border-white">
+          className="bg-white bg-opacity-50 backdrop-blur-sm ds-btn ds-btn-xs ds-btn-outline ds-btn-accent border-jungle text-jungle hover:border-white">
           1
         </a>
         <a
           href="#slide2"
-          className="ds-btn ds-btn-xs ds-btn-outline ds-btn-accent border-jungle text-jungle hover:border-white">
+          className="bg-white bg-opacity-50 backdrop-blur-sm  ds-btn ds-btn-xs ds-btn-outline ds-btn-accent border-jungle text-jungle hover:border-white">
           2
         </a>
       </div>

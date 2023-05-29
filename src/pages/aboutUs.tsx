@@ -22,6 +22,7 @@ export default function Blog() {
     <div className="grow lg:w-1/2 p-3 lg:p-10 m-4 bg-sunset mb-[100px] rounded-xl shadow-lg text-jungle">
       <article className="prose prose-jungle max-w-none dark:prose-invert">
         <ReactMarkdown children={testMd} remarkPlugins={[remarkGfm]} />
+        
       </article>
     </div>
   );

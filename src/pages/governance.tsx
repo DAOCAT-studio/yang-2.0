@@ -13,7 +13,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Governance() {
   const [nftGameMenuVisible, setNftGameMenuVisible] = useState(false);
-
+  
   return (
     <>
       <Head>
@@ -28,14 +28,14 @@ export default function Governance() {
           rel="stylesheet"
         />
       </Head>
-      <div className="w-screen lg:min-h-screen h-screen overflow-y-auto  bg-white flex flex-col pb-[80px] lg:pb-0 justify-between items-center">
+      <div className="w-screen lg:min-h-screen h-screen overflow-y-auto  bg-paper flex flex-col pb-[80px] lg:pb-0 justify-between items-center">
         <div className=" invisible lg:visible w-full h-0 lg:h-auto ">
           <NavBar />
         </div>
 
         <div className="w-full grow">
           <iframe
-            className="w-full h-full"
+            className="w-full h-full bg-paper"
             src="https://manager.daolens.com/app/dao/DAOCAT/1285/channel/4462"></iframe>
         </div>
 
